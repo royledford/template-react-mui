@@ -1,27 +1,7 @@
-import AuthProvider from './providers/AuthProvider'
-import Routes from './routes'
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-
-const retrievePosts = async () => {
-  const response = await fetch('http://localhost:8000/posts')
-  const data = await response.json()
-  return data
-}
+import Home from './pages/Home/Home'
 
 export default function App() {
-  const { isLoading, data } = useQuery({
-    queryKey: ['posts'],
-    queryFn: retrievePosts,
-  })
-
-  return (
-    <AuthProvider>
-      <Routes />
-    </AuthProvider>
-    // <div>
-    //   {data && data.map((post) => <div key={post.id}>{post.title}</div>)}
-    // </div>
-  )
+  return <Home />
 }
 
 function wait(duration) {
